@@ -3,8 +3,30 @@ import axios from "axios";
 
 import "./App.css";
 
+const Grandchild = props => {
+  return (
+    <div>
+      <h3>Grand child: {props.personData.grandchildName} </h3>
+    </div>
+  );
+};
+
+const Child = props => {
+  return (
+    <div>
+      <h2>Child: {props.personData.childName}</h2>
+      <Grandchild personData={props.personData} />
+    </div>
+  );
+};
+
 const Parent = props => {
-  return <div>Parent: {props.personData.parentName}</div>;
+  return (
+    <div>
+      <h1>Parent: {props.personData.parentName}</h1>
+      <Child personData={props.personData} />
+    </div>
+  );
 };
 
 const App = () => {
